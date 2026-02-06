@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Valentine?</title>
+<title>Special Surprise</title>
 
 <style>
   body {
@@ -22,8 +22,15 @@
     padding: 40px 30px;
     border-radius: 20px;
     box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-    width: 350px;
+    width: 380px;
     position: relative;
+    z-index: 2;
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
   }
 
   .emoji {
@@ -32,86 +39,66 @@
   }
 
   h1 {
-    font-size: 22px;
-    margin-bottom: 25px;
+    font-size: 24px;
+    margin-bottom: 20px;
   }
 
-  button {
-    padding: 12px 25px;
-    font-size: 16px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    margin: 10px;
-    transition: 0.2s ease;
-  }
-
-  #yes {
-    background: #ff4d6d;
-    color: white;
-  }
-
-  #yes:hover {
-    transform: scale(1.1);
-  }
-
-  #no {
-    background: #ccc;
-    position: absolute;
-  }
-
-  .yay-screen {
-    display: none;
-  }
-
-  .yay-screen h2 {
-    font-size: 28px;
-    color: #ff4d6d;
-  }
-
-  .yay-screen img {
+  .gif {
     width: 100%;
     border-radius: 15px;
-    margin-top: 15px;
+    margin-top: 10px;
+  }
+
+  /* Confetti */
+  .confetti {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    background: red;
+    top: -10px;
+    animation: fall linear infinite;
+  }
+
+  @keyframes fall {
+    to {
+      transform: translateY(110vh) rotate(720deg);
+    }
   }
 </style>
 </head>
 
 <body>
 
-<div class="box" id="mainBox">
+<div class="box">
+  <div class="emoji">🎉💖</div>
+  <h1>Be ready Saturday at 8PM!!!!</h1>
 
-  <div class="emoji">😺💖</div>
-
-  <h1> Be ready saturday at 8PM!!!!!!!!!</h1>
-
-  <button id="yes">Yes</button>
-  <button id="no">No</button>
-
+  <!-- Replace with your own GIF -->
+  <img class="gif" src="https://media.giphy.com/media/3o7TKMt1VVNkHV2PaE/giphy.gif" alt="Celebration GIF">
 </div>
 
 <script>
-  const noBtn = document.getElementById("no");
-  const yesBtn = document.getElementById("yes");
-  const mainBox = document.getElementById("mainBox");
+  // Create confetti
+  function createConfetti() {
+    const confetti = document.createElement("div");
+    confetti.classList.add("confetti");
 
-  // Move NO button
-  noBtn.addEventListener("mouseover", () => {
-    const x = Math.random() * (window.innerWidth - 100);
-    const y = Math.random() * (window.innerHeight - 50);
-    noBtn.style.left = x + "px";
-    noBtn.style.top = y + "px";
-  });
+    confetti.style.left = Math.random() * 100 + "vw";
+    confetti.style.backgroundColor =
+      ["#ff4d6d", "#ffbe0b", "#3a86ff", "#8338ec", "#06d6a0"]
+      [Math.floor(Math.random() * 5)];
 
-  // YES clicked → show celebration screen
-  yesBtn.addEventListener("click", () => {
-    mainBox.innerHTML = `
-      <div class="yay-screen">
-        <h2>YAY! 🎉❤️</h2>
-        <img src="AB325298-4592-4E07-A257-A29A35EFD599.jpeg" alt="Celebration">
-      </div>
-    `;
-  });
+    confetti.style.animationDuration = (Math.random() * 3 + 2) + "s";
+    confetti.style.opacity = Math.random();
+
+    document.body.appendChild(confetti);
+
+    setTimeout(() => {
+      confetti.remove();
+    }, 5000);
+  }
+
+  setInterval(createConfetti, 150);
 </script>
 
 </body>
