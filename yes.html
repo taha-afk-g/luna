@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valentine</title>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #f5f3ef;
+        text-align: center;
+    }
+
+    /* Confetti effect */
+    body::before {
+        content: "";
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background-image: radial-gradient(#c9c9c9 1px, transparent 1px);
+        background-size: 25px 25px;
+        opacity: 0.3;
+        z-index: -1;
+    }
+
+    .container {
+        padding: 40px 20px;
+    }
+
+    .emoji {
+        font-size: 70px;
+        margin-bottom: 20px;
+    }
+
+    h1 {
+        font-size: 42px;
+        font-weight: bold;
+        margin: 0;
+        text-transform: lowercase;
+    }
+
+    .yay {
+        font-size: 36px;
+        font-weight: bold;
+        margin: 20px 0;
+    }
+
+    .yay span {
+        font-size: 40px;
+    }
+
+    .image-box {
+        margin-top: 20px;
+    }
+
+    .image-box img {
+        max-width: 600px;
+        width: 90%;
+        border-radius: 8px;
+    }
+
+    @media (max-width: 600px) {
+        h1 {
+            font-size: 28px;
+        }
+        .yay {
+            font-size: 24px;
+        }
+    }
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+    <div class="emoji">😺💖</div>
+
+    <h1>nirali will you be my valentine?</h1>
+
+    <div class="yay">
+        YAY! <span>🎉</span>
+    </div>
+
+    <div class="image-box">
+        <img src="your-image.jpg" alt="Valentine Image">
+    </div>
+
+</div>
+
+</body>
+</html>
